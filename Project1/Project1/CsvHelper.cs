@@ -7,17 +7,22 @@ namespace Project1
 {
     public class CsvHelper
     {
-        internal IList<Computer> LoadDataFromCsv(string csvPath)
+        private CsvFileDescription csvFileDescription;
+
+        public CsvHelper()
         {
-            CsvFileDescription csvFileDescription = new CsvFileDescription()
+            csvFileDescription = new CsvFileDescription()
             {
                 SeparatorChar = ';',
                 EnforceCsvColumnAttribute = true,
                 IgnoreUnknownColumns = true,
                 UseFieldIndexForReadingData = true,
-                FirstLineHasColumnNames = false
+                FirstLineHasColumnNames = false,
+                QuoteAllFields = false
             };
-
+        }
+        public IList<Computer> LoadDataFromCsv(string csvPath)
+        {
             CsvContext csvContext = new CsvContext();
             IList<Computer> results = null;
 
@@ -33,6 +38,22 @@ namespace Project1
             }
 
             return results;
+        }
+
+        public void SaveDataToCsv(string path, IEnumerable<Computer> computers)
+        {
+            CsvContext csvContext = new CsvContext();
+            try
+            {
+                csvContext.Write<Computer>(computers, path, csvFileDescription);
+  
+            }
+            catch(Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error occured: {ex.Message}");
+                Console.ResetColor();
+            }
         }
     }
 }

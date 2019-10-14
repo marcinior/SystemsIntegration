@@ -1,0 +1,15 @@
+﻿<Window x:Class="Project2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project2"
+        mc:Ignorable="d"
+        Title="Integracja Systemów - Marcin Bobel" Height="1080" Width="1920" WindowState="Maximized" ResizeMode="CanMinimize">
+    <Grid>
+        <DataGrid x:Name="PriceList" HorizontalAlignment="Left" Height="950" Margin="10,90,10,0" VerticalAlignment="Top" Width="1894" ColumnWidth="102"/>
+        <Button x:Name="LoadDataFromCsvButton" Content="Wczytaj dane z pliku TXT" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="325" Height="30" Click="LoadDataFromCsvButton_Click"/>
+        <Button x:Name="SaveDataToCsvButton" Content="Zapisz dane do pliku TXT" HorizontalAlignment="Left" Margin="380,30,0,0" VerticalAlignment="Top" Width="290" Height="30" Click="SaveDataToCsvButton_Click"/>
+
+    </Grid>
+</Window>

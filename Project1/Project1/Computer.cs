@@ -2,7 +2,7 @@
 
 namespace Project1
 {
-    class Computer
+    public class Computer
     {
         [CsvColumn(FieldIndex = 1, CanBeNull = false)]
         public string Producer { get; set; }
@@ -16,8 +16,8 @@ namespace Project1
         [CsvColumn(FieldIndex = 4)]
         public string DisplayType { get; set; }
 
-        //[CsvColumn(FieldIndex = 5)]
-        //public string NoName { get; set; }
+        [CsvColumn(FieldIndex = 5)]
+        public string NoName { get; set; }
 
         [CsvColumn(FieldIndex = 6)]
         public string Processor { get; set; }
@@ -35,7 +35,7 @@ namespace Project1
         public string DiscSize { get; set; }
 
         [CsvColumn(FieldIndex = 11)]
-        public string discType { get; set; }
+        public string DiscType { get; set; }
 
         [CsvColumn(FieldIndex = 12)]
         public string Gpu { get; set; }
@@ -48,14 +48,5 @@ namespace Project1
 
         [CsvColumn(FieldIndex = 15)]
         public string OpticalDrive { get; set; }
-
-        //public DiscTypeEnum DiscType { get; set; }
-
-    }
-
-    public enum DiscTypeEnum
-    {
-        HDD,
-        SSD
     }
 }

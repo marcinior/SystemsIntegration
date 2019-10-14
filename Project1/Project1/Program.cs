@@ -6,7 +6,7 @@ namespace Project1
 {
     class Program
     {
-        private static readonly int[] tableCelWidths = { 12, 10, 15, 15, 15, 8, 9, 9, 12, 10, 31, 10, 31, 14 };
+        private static readonly int[] tableCelWidths = { 12, 10, 15, 15, 0, 15, 8, 9, 9, 12, 10, 31, 10, 31, 14 };
 
         static void Main(string[] args)
         {
@@ -23,6 +23,9 @@ namespace Project1
                 var properties = computer.GetType().GetProperties().ToArray();
                 for(int i = 0; i < properties.Length; i++)
                 {
+                    if (properties[i].Name == nameof(Computer.NoName))
+                        continue;
+
                     Console.Write(string.Format("{0,-" + tableCelWidths[i] + "}", properties[i].GetValue(computer)));
                 }
                 Console.Write("\n");
