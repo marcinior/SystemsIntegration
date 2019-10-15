@@ -17,8 +17,7 @@ namespace Project1
                 EnforceCsvColumnAttribute = true,
                 IgnoreUnknownColumns = true,
                 UseFieldIndexForReadingData = true,
-                FirstLineHasColumnNames = false,
-                QuoteAllFields = false
+                FirstLineHasColumnNames = false
             };
         }
         public IList<Computer> LoadDataFromCsv(string csvPath)
