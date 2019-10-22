@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LINQtoCSV;
 
-namespace Project1
+namespace CsvHelper
 {
     public class CsvHelper
     {
@@ -20,10 +20,10 @@ namespace Project1
                 FirstLineHasColumnNames = false
             };
         }
-        public IList<Computer> LoadDataFromCsv(string csvPath)
+        public List<Computer> LoadDataFromCsv(string csvPath)
         {
             CsvContext csvContext = new CsvContext();
-            IList<Computer> results = null;
+            List<Computer> results = null;
 
             try
             {

@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,9 +96,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Project1\Project1.csproj">
+    <ProjectReference Include="..\CsvDB\CsvDB.csproj">
+      <Project>{FA58B748-DEBC-458E-BF93-EBA714406CC8}</Project>
+      <Name>CsvDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project1\CsvConsole.csproj">
       <Project>{0102DC09-C8FB-455A-9118-D20F79767488}</Project>
-      <Name>Project1</Name>
+      <Name>CsvConsole</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

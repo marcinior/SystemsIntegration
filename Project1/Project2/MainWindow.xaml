@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="Integracja Systemów - Marcin Bobel" Height="1080" Width="1920" WindowState="Maximized" ResizeMode="CanMinimize">
     <Grid>
-        <DataGrid x:Name="PriceList" HorizontalAlignment="Left" Height="950" Margin="10,90,10,0" VerticalAlignment="Top" Width="1894" ColumnWidth="102"/>
-        <Button x:Name="LoadDataFromCsvButton" Content="Wczytaj dane z pliku TXT" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="325" Height="30" Click="LoadDataFromCsvButton_Click"/>
-        <Button x:Name="SaveDataToCsvButton" Content="Zapisz dane do pliku TXT" HorizontalAlignment="Left" Margin="380,30,0,0" VerticalAlignment="Top" Width="290" Height="30" Click="SaveDataToCsvButton_Click"/>
+        <DataGrid x:Name="PriceList" HorizontalAlignment="Left" Height="950" Margin="10,90,10,0" VerticalAlignment="Top" Width="1894" ColumnWidth="102" CellEditEnding="DataGridCellEditEvent"/>
+        <Button x:Name="LoadDataFromCsvButton" Content="Wczytaj dane z pliku TXT" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="170" Height="30" Click="LoadDataFromCsvButton_Click"/>
+        <Button x:Name="SaveDataToCsvButton" Content="Zapisz dane do pliku TXT" HorizontalAlignment="Left" Margin="195,30,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="SaveDataToCsvButton_Click"/>
+        <Button x:Name="LoadDataFromDbButton" Content="Importuj z bazy danych" HorizontalAlignment="Left" Margin="360,30,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="LoadDataFromDbButton_Click"/>
+        <Button x:Name="ExportToDbButton" Content="Eksportuj do bazy danych" HorizontalAlignment="Left" Margin="510,30,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="ExportToDbButton_Click"/>
 
     </Grid>
 </Window>

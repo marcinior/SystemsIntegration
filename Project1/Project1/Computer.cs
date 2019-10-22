@@ -1,6 +1,6 @@
 ﻿using LINQtoCSV;
 
-namespace Project1
+namespace CsvHelper
 {
     public class Computer
     {

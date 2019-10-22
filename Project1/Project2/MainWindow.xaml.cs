@@ -1,18 +1,10 @@
-﻿using Project1;
-using System;
+﻿using CsvDB;
+using CsvHelper;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project2
 {
@@ -21,25 +13,51 @@ namespace Project2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CsvHelper csvHelper;
+        private CsvHelper.CsvHelper csvHelper;
+        private CsvDbHelper csvDbHelper;
+        private bool IsDataLoadedFromDb;
 
         public MainWindow()
         {
             InitializeComponent();
-            csvHelper = new CsvHelper();
+            csvHelper = new CsvHelper.CsvHelper();
+            string connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
+            csvDbHelper = new CsvDbHelper(connectionString);
         }
 
 
         private void LoadDataFromCsvButton_Click(object sender, RoutedEventArgs e)
         {
-            IList<Computer> computers = csvHelper.LoadDataFromCsv(@"Files\katalog.txt");
+            List<Computer> computers = csvHelper.LoadDataFromCsv(@"Files\katalog.txt");
             PriceList.ItemsSource = computers;
+            IsDataLoadedFromDb = false;
         }
 
         private void SaveDataToCsvButton_Click(object sender, RoutedEventArgs e)
         {
             csvHelper.SaveDataToCsv(@"Files\katalog.txt", PriceList.ItemsSource as IEnumerable<Computer>);
             MessageBox.Show("Pomyślnie zapisano dane do pliku");
+        }
+
+        private void LoadDataFromDbButton_Click(object sender, RoutedEventArgs e)
+        {
+            PriceList.ItemsSource = csvDbHelper.GetComputers();
+            IsDataLoadedFromDb = true;
+        }
+
+        private void ExportToDbButton_Click(object sender, RoutedEventArgs e)
+        {
+            var computers = PriceList.ItemsSource as List<Computer>;
+            csvDbHelper.UpdateComputers(computers);
+        }
+
+        private void DataGridCellEditEvent(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (!IsDataLoadedFromDb)
+                return;
+
+            FrameworkElement element = e.Column.GetCellContent(PriceList.SelectedItem);
+            (element.Parent as DataGridCell).Background = new SolidColorBrush(Colors.LightGreen);
         }
     }
 }
