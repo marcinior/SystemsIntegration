@@ -96,17 +96,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CsvDB\CsvDB.csproj">
-      <Project>{FA58B748-DEBC-458E-BF93-EBA714406CC8}</Project>
-      <Name>CsvDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Project1\CsvConsole.csproj">
-      <Project>{0102DC09-C8FB-455A-9118-D20F79767488}</Project>
-      <Name>CsvConsole</Name>
+    <ProjectReference Include="..\StorageHelper\StorageHelper.csproj">
+      <Project>{08855C65-CC9C-48CA-A896-D28BE6B1CD12}</Project>
+      <Name>StorageHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\katalog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\katalog.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

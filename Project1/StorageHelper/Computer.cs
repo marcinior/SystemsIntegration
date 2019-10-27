@@ -1,6 +1,6 @@
 ﻿using LINQtoCSV;
 
-namespace CsvHelper
+namespace StorageHelper
 {
     public class Computer
     {
@@ -17,7 +17,7 @@ namespace CsvHelper
         public string DisplayType { get; set; }
 
         [CsvColumn(FieldIndex = 5)]
-        public string NoName { get; set; }
+        public string TouchScreen { get; set; }
 
         [CsvColumn(FieldIndex = 6)]
         public string Processor { get; set; }

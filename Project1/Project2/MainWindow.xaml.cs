@@ -1,5 +1,5 @@
-﻿using CsvDB;
-using CsvHelper;
+﻿using StorageHelper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Windows;
@@ -13,42 +13,76 @@ namespace Project2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CsvHelper.CsvHelper csvHelper;
-        private CsvDbHelper csvDbHelper;
+        private CsvHelper csvHelper;
+        private DbHelper dbHelper;
+        private XmlHelper xmlHelper;
         private bool IsDataLoadedFromDb;
 
         public MainWindow()
         {
             InitializeComponent();
-            csvHelper = new CsvHelper.CsvHelper();
+            csvHelper = new CsvHelper();
             string connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
-            csvDbHelper = new CsvDbHelper(connectionString);
+            dbHelper = new DbHelper(connectionString);
+            xmlHelper = new XmlHelper();
         }
 
 
         private void LoadDataFromCsvButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Computer> computers = csvHelper.LoadDataFromCsv(@"Files\katalog.txt");
-            PriceList.ItemsSource = computers;
-            IsDataLoadedFromDb = false;
+            try
+            {
+                List<Computer> computers = csvHelper.LoadDataFromCsv(@"Files\katalog.txt");
+                PriceList.ItemsSource = computers;
+                IsDataLoadedFromDb = false;
+                Log.Text = "Pobrano dane z pliku CSV";
+            }
+            catch(Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }
         }
 
         private void SaveDataToCsvButton_Click(object sender, RoutedEventArgs e)
         {
-            csvHelper.SaveDataToCsv(@"Files\katalog.txt", PriceList.ItemsSource as IEnumerable<Computer>);
-            MessageBox.Show("Pomyślnie zapisano dane do pliku");
+            try
+            {
+                csvHelper.SaveDataToCsv(@"Files\katalog.txt", PriceList.ItemsSource as IEnumerable<Computer>);
+                Log.Text = "Zapisano dane do pliku CSV";
+            }
+            catch (Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }
         }
 
         private void LoadDataFromDbButton_Click(object sender, RoutedEventArgs e)
         {
-            PriceList.ItemsSource = csvDbHelper.GetComputers();
-            IsDataLoadedFromDb = true;
+            try
+            {
+                PriceList.ItemsSource = dbHelper.GetComputers();
+                IsDataLoadedFromDb = true;
+                Log.Text = "Pobrano dane z bazy danych";
+            }
+            catch (Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }
+
         }
 
         private void ExportToDbButton_Click(object sender, RoutedEventArgs e)
         {
-            var computers = PriceList.ItemsSource as List<Computer>;
-            csvDbHelper.UpdateComputers(computers);
+            try
+            {
+                var computers = PriceList.ItemsSource as List<Computer>;
+                dbHelper.UpdateComputers(computers);
+                Log.Text = "Zapisano dane do bazy danych";
+            }
+            catch (Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }        
         }
 
         private void DataGridCellEditEvent(object sender, DataGridCellEditEndingEventArgs e)
@@ -58,6 +92,33 @@ namespace Project2
 
             FrameworkElement element = e.Column.GetCellContent(PriceList.SelectedItem);
             (element.Parent as DataGridCell).Background = new SolidColorBrush(Colors.LightGreen);
+        }
+
+        private void LoadDataFromXmlButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PriceList.ItemsSource = xmlHelper.LoadComputersFromXml(@"Files\katalog.xml");
+                Log.Text = "Pobrano dane z pliku XML";
+            }
+            catch (Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }
+            
+        }
+
+        private void ExportToXmlButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                xmlHelper.SaveDataToXml(@"Files\katalog.xml", PriceList.ItemsSource as List<Computer>);
+                Log.Text = "Zapisano dane do pliku XML";
+            }
+            catch (Exception ex)
+            {
+                Log.Text = "Error occured: " + ex.Message;
+            }
         }
     }
 }

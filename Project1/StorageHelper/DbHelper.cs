@@ -1,18 +1,18 @@
-﻿using CsvHelper;
+﻿using StorageHelper;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace CsvDB
+namespace StorageHelper
 {
-    public class CsvDbHelper
+    public class DbHelper
     {
         private readonly string connectionString;
         private readonly List<PropertyInfo> ComputerFields;
 
-        public CsvDbHelper(string connectionString)
+        public DbHelper(string connectionString)
         {
             this.connectionString = connectionString;
             ComputerFields = typeof(Computer).GetProperties().ToList();

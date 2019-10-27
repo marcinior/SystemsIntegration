@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LINQtoCSV;
 
-namespace CsvHelper
+namespace StorageHelper
 {
     public class CsvHelper
     {
