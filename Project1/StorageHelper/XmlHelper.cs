@@ -51,15 +51,16 @@ namespace StorageHelper
         public void SaveDataToXml(string path, List<Computer> computers)
         {
             XElement root = new XElement("laptops");
-            foreach(var computer in computers)
+            root.SetAttributeValue("moddate", DateTime.Now);
+            for (int i = 0; i < computers.Count; i++)
             {
-                root.Add(
-                        new XElement("laptop",
+                var computer = computers[i];
+                XElement laptop = new XElement("laptop",
                             new XElement("manufacturer", computer.Producer),
-                            new XElement("screen", 
+                            new XElement("screen",
                                 new XElement("size", computer.ScreenSize),
                                 new XElement("resolution", computer.ScreenResolution),
-                                new XElement("type", computer.DiscType),
+                                new XElement("type", computer.DisplayType),
                                 new XElement("touchscreen", computer.TouchScreen)),
                             new XElement("processor",
                                 new XElement("name", computer.Processor),
@@ -73,8 +74,10 @@ namespace StorageHelper
                                 new XElement("name", computer.Gpu),
                                 new XElement("memory", computer.GpuMemory)),
                             new XElement("os", computer.OperatingSystem),
-                            new XElement("disc_reader", computer.OpticalDrive)
-                    ));
+                            new XElement("disc_reader", computer.OpticalDrive));
+
+                laptop.SetAttributeValue("id", i + 1);
+                root.Add(laptop);
             }
 
             XDocument xDoc = new XDocument(new XDeclaration("1.0", "UTF-16", null), root);

@@ -1,5 +1,5 @@
-﻿using StorageHelper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -71,6 +71,56 @@ namespace StorageHelper
                     }
                 }
             }
+        }
+
+        public int GetCountOfComputersByProducer(string producer)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "select count(*) as CountNumber from [dbo].Computers where [dbo].Computers.Producer = @Producer";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("Producer", SqlDbType.VarChar).Value = producer;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        return reader.GetInt32(0);
+                    }
+                }
+            }
+        }
+
+        public List<Computer> GetComputersByDisplayType(string displayType)
+        {
+            List<Computer> computers = new List<Computer>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "select * from [dbo].Computers where [dbo].Computers.DisplayType = @DisplayType";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("DisplayType", SqlDbType.VarChar).Value = displayType;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Computer Computer = new Computer();
+                            ComputerFields.ForEach(f =>
+                            {
+                                string value = reader.GetString(reader.GetOrdinal(f.Name));
+                                f.SetValue(Computer, value);
+
+                            });
+                            computers.Add(Computer);
+                        }
+                    }
+                }
+            }
+            return computers;
         }
     }
 }
