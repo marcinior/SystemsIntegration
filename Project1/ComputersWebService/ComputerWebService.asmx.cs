@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Protocols;
 
 namespace ComputersWebService
 {
@@ -35,8 +36,9 @@ namespace ComputersWebService
             return "Hello World";
         }
 
-        [WebMethod]
-        public int GetCountOfComputersByProducer(string producer)
+        [WebMethod(Description = "Returns number of computers in database by producer")]
+        [SoapDocumentMethod(ResponseElementName = "GetCountOfComputersByProducer")] 
+        public int ComputersCount(string producer)
         {
             int count = 0;
 

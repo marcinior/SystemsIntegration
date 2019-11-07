@@ -14,7 +14,8 @@
         <Button x:Name="ExportToDbButton" Content="Eksportuj do bazy danych" HorizontalAlignment="Left" Margin="165,45,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="ExportToDbButton_Click"/>
         <Button x:Name="LoadDataFromXmlButton" Content="Importuj z XML" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="115" Height="30" Click="LoadDataFromXmlButton_Click"/>
         <Button x:Name="ExportToXmlButton" Content="Eksportuj do XML" HorizontalAlignment="Left" Margin="310,45,0,0" VerticalAlignment="Top" Width="115" Height="30" Click="ExportToXmlButton_Click"/>
-        <TextBox x:Name="Log" HorizontalAlignment="Left" Height="65" Margin="440,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1464" IsEnabled="False"/>
+        <TextBox x:Name="Log" HorizontalAlignment="Left" Height="65" Margin="615,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1289" IsEnabled="False" MinWidth="1280"/>
+        <Button x:Name="GoToClientAppButton" Content="Otwórz aplikację kliencką" HorizontalAlignment="Left" Margin="430,10,0,0" VerticalAlignment="Top" Width="169" Height="65" Click="GoToClientAppButton_Click"/>
 
     </Grid>
 </Window>

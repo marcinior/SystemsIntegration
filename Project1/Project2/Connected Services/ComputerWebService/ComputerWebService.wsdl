@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComputersCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountOfComputersByProducer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComputersCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetComputersByDisplayType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="displayType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetComputersByDisplayTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetComputersByDisplayTypeResult" type="tns:ArrayOfComputer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfComputer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Computer" nillable="true" type="tns:Computer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Computer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Producer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScreenSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScreenResolution" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TouchScreen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Processor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalCores" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CpuClockSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gpu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GpuMemory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatingSystem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpticalDrive" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="ComputersCountSoapIn">
+    <wsdl:part name="parameters" element="tns:ComputersCount" />
+  </wsdl:message>
+  <wsdl:message name="ComputersCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountOfComputersByProducer" />
+  </wsdl:message>
+  <wsdl:message name="GetComputersByDisplayTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetComputersByDisplayType" />
+  </wsdl:message>
+  <wsdl:message name="GetComputersByDisplayTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetComputersByDisplayTypeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ComputerWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComputersCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns number of computers in database by producer</wsdl:documentation>
+      <wsdl:input message="tns:ComputersCountSoapIn" />
+      <wsdl:output message="tns:ComputersCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComputersByDisplayType">
+      <wsdl:input message="tns:GetComputersByDisplayTypeSoapIn" />
+      <wsdl:output message="tns:GetComputersByDisplayTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ComputerWebServiceSoap" type="tns:ComputerWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComputersCount">
+      <soap:operation soapAction="http://tempuri.org/ComputersCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComputersByDisplayType">
+      <soap:operation soapAction="http://tempuri.org/GetComputersByDisplayType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ComputerWebServiceSoap12" type="tns:ComputerWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComputersCount">
+      <soap12:operation soapAction="http://tempuri.org/ComputersCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComputersByDisplayType">
+      <soap12:operation soapAction="http://tempuri.org/GetComputersByDisplayType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComputerWebService">
+    <wsdl:port name="ComputerWebServiceSoap" binding="tns:ComputerWebServiceSoap">
+      <soap:address location="https://localhost:44324/ComputerWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ComputerWebServiceSoap12" binding="tns:ComputerWebServiceSoap12">
+      <soap12:address location="https://localhost:44324/ComputerWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -37,7 +37,7 @@ namespace Project2
                 IsDataLoadedFromDb = false;
                 Log.Text = "Pobrano dane z pliku CSV";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Text = "Error occured: " + ex.Message;
             }
@@ -82,7 +82,7 @@ namespace Project2
             catch (Exception ex)
             {
                 Log.Text = "Error occured: " + ex.Message;
-            }        
+            }
         }
 
         private void DataGridCellEditEvent(object sender, DataGridCellEditEndingEventArgs e)
@@ -105,7 +105,7 @@ namespace Project2
             {
                 Log.Text = "Error occured: " + ex.Message;
             }
-            
+
         }
 
         private void ExportToXmlButton_Click(object sender, RoutedEventArgs e)
@@ -119,6 +119,12 @@ namespace Project2
             {
                 Log.Text = "Error occured: " + ex.Message;
             }
+        }
+
+        private void GoToClientAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClientApp clientAppWindow = new ClientApp();
+            clientAppWindow.Show();
         }
     }
 }

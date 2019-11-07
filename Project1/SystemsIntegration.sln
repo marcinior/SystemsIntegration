@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvConsole", "Project1\CsvConsole.csproj", "{0102DC09-C8FB-455A-9118-D20F79767488}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvWindow", "Project2\CsvWindow.csproj", "{23A2C785-99B3-45E1-A78B-5E659386ECD3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EEBECAE8-64B8-4DB1-B079-86029C63E305} = {EEBECAE8-64B8-4DB1-B079-86029C63E305}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageHelper", "StorageHelper\StorageHelper.csproj", "{08855C65-CC9C-48CA-A896-D28BE6B1CD12}"
 EndProject

@@ -122,5 +122,28 @@ namespace StorageHelper
             }
             return computers;
         }
+
+        public List<string> GetProducers()
+        {
+            List<string> producers = new List<string>();
+
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "select distinct Producer from [dbo].Computers";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            producers.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return producers;
+        }
     }
 }
