@@ -1,0 +1,45 @@
+﻿<Window x:Class="TestAutomation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestAutomation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800">
+    <Grid>
+        <Button Content="Wykonaj" HorizontalAlignment="Left" Margin="510,573,0,0" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
+        <Label Content="Który rekord ma zostać zmodyfikowany?" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="RowId" HorizontalAlignment="Left" Height="23" Margin="280,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
+        <CheckBox x:Name="ProducerCheckbox" Content="Producent" HorizontalAlignment="Left" Margin="42,58,0,0" VerticalAlignment="Top" Height="22" Width="153"/>
+        <TextBox Text="{Binding Producer}" HorizontalAlignment="Left" Height="22" Margin="205,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="ScreenSizeCheckbox" Content="Wielkość matrycy" HorizontalAlignment="Left" Margin="42,95,0,0" VerticalAlignment="Top" Height="22" Width="153"/>
+        <TextBox Text="{Binding ScreenSize}" HorizontalAlignment="Left" Height="22" Margin="205,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="ResolutionCheckbox" Content="Rozdzielczość" HorizontalAlignment="Left" Margin="42,130,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding ScreenResolution}" HorizontalAlignment="Left" Height="22" Margin="205,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="DisplayTypeCheckbox" Content="Typ matrycy" HorizontalAlignment="Left" Margin="42,170,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding DisplayType}" HorizontalAlignment="Left" Height="22" Margin="205,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="ProcessorCheckbox" Content="Procesor" HorizontalAlignment="Left" Margin="42,205,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding Processor}" HorizontalAlignment="Left" Height="22" Margin="205,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="PhysicalCoresCheckbox" Content="Liczba rdzeni" HorizontalAlignment="Left" Margin="42,242,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding PhysicalCores}" HorizontalAlignment="Left" Height="22" Margin="205,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="CpuClockSpeedCheckbox" Content="Taktowanie" HorizontalAlignment="Left" Margin="42,280,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding CpuClockSpeed}" HorizontalAlignment="Left" Height="22" Margin="205,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="RamCheckbox" Content="RAM" HorizontalAlignment="Left" Margin="42,317,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding Ram}" HorizontalAlignment="Left" Height="22" Margin="205,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="DiscSizeCheckbox" Content="Pojemność dysku" HorizontalAlignment="Left" Margin="42,355,0,0" VerticalAlignment="Top" Height="22" Width="113"/>
+        <TextBox Text="{Binding DiscSize}" HorizontalAlignment="Left" Height="22" Margin="205,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="DiscTypeCheckbox" Content="Typ dysku" HorizontalAlignment="Left" Margin="42,390,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding DiscType}" HorizontalAlignment="Left" Height="22" Margin="205,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="GpuCheckbox" Content="Karta Graficzna" HorizontalAlignment="Left" Margin="42,427,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding Gpu}" HorizontalAlignment="Left" Height="22" Margin="205,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="GpuMemoryCheckbox" Content="Pamięć karty graficznej" HorizontalAlignment="Left" Margin="42,462,0,0" VerticalAlignment="Top" Height="22" Width="153"/>
+        <TextBox Text="{Binding GpuMemory}" HorizontalAlignment="Left" Height="22" Margin="205,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="OSCheckbox" Content="System operacyjny" HorizontalAlignment="Left" Margin="42,497,0,0" VerticalAlignment="Top" Height="22" Width="123"/>
+        <TextBox Text="{Binding OperatingSystem}" HorizontalAlignment="Left" Height="22" Margin="205,497,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="OpticalDriveCheckbox" Content="Napęd optyczny" HorizontalAlignment="Left" Margin="42,537,0,0" VerticalAlignment="Top" Height="22" Width="108"/>
+        <TextBox Text="{Binding OpticalDrive}" HorizontalAlignment="Left" Height="22" Margin="205,537,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <CheckBox x:Name="SaveToXmlCheckbox" Content="Czy wykonać dodatkowy zapis do XML?" HorizontalAlignment="Left" Margin="42,575,0,0" VerticalAlignment="Top" Height="22" Width="248"/>
+        
+
+    </Grid>
+</Window>
